@@ -1,0 +1,60 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container">
+    <br>
+    <br>
+    {% if pk_test == '0' %}
+    <h3><strong>Men</strong> >> Clothing And Accessories</span></h3>
+    {% endif %}
+    {% if pk_test == '1' %}
+    <h3>Watches</span></h3>
+    {% endif %}
+    <br>
+
+
+    <div class="row">
+        {% for product in products|slice:"16" %}
+        <div class="col-lg-4">
+            <!-- <img class="thumbnail" src="{{product.imageURL}}"> -->
+            <img class="thumbnail" style="height:441px;" src="{{product.image_link}}">
+            <br>
+            <br>
+            <div style="margin-left: 31px;">
+                <button data-product="{{product.id}}" data-action="add" class="btn btn btn-warning add-btn update-cart"
+                    style="padding: 11px 26px 9px 26px; color:white;">Add to Cart</button>
+                <a class="btn btn btn-warning add-btn update-cart" data-product="{{product.id}}" data-action="add" href="{% url 'cart' %}"
+                    style="padding: 11px 38px 9px 37px; color:white; background-color: tomato;">Buy Now</a>
+            </div>
+        </div>
+        <div class="col-lg-7">
+            <h3>{{product.name}}</h3>
+            <br>
+            <h2><strong>&nbsp;&nbsp;₹{{product.price}}</strong></h2>
+            <div class="col-lg-7">
+                <br>
+                <h6><strong>DELIVERY OPTIONS</strong></h6>
+                <form action="" method=""
+                    class="navbar-form navbar-left d-flex align-items-center flex-nowrap" role="search">
+                    <input type="text" name="delivery_options" class="form-control home-search"
+                        placeholder="Enter Pincode">
+                </form>
+                <br>
+
+                <span>100% Original Products</span>
+                <span>Free Delivery on order above Rs. 799</span>
+                <span>Pay on delivery might be available</span>
+                <span>30 days returns and exchanges</span>
+                <span>Try & Buy might be available</span>
+            </div>
+            <hr>
+            <h6><strong>PRODUCT DETAILS</strong></h6>
+            <span>{{product.name}}</span>
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

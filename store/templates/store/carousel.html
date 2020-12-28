@@ -1,0 +1,193 @@
+{% load static %}
+<!--
+    ####################################################
+    C A R O U S E L
+    ####################################################
+    -->
+<style>
+    /*
+Removes white gap between slides - chagnge to base color of slide images
+*/
+    .carousel {
+        background: #007aeb;
+    }
+
+    /*
+Forces image to be 100% width and not max width of 100%
+*/
+    .carousel-item .img-fluid {
+        width: 100%;
+    }
+
+    /* 
+anchors are inline so you need ot make them block to go full width
+*/
+    .carousel-item a {
+        display: block;
+        width: 100%;
+    }
+
+    .thin-font {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 1.1em;
+        font-weight: 300;
+    }
+</style>
+
+<div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="6000">
+    <ol class="carousel-indicators">
+        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel" data-slide-to="1"></li>
+        <li data-target="#carousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+            <a href="{% url 'all_products' '10' %}">
+                <!-- 
+                    If you need more browser support use https://scottjehl.github.io/picturefill/
+                    If a picture looks blurry on a retina device you can add a high resolution like this
+                    <source srcset="img/blog-post-1000x600-2.jpg, blog-post-1000x600-2@2x.jpg 2x" media="(min-width: 768px)">
+
+                    What image sizes should you use? This can help - https://codepen.io/JacobLett/pen/NjramL
+                     -->
+                <picture>
+                    <source srcset="images/bg3.jpg" media="(min-width: 1400px)">
+                    <source srcset="images/christmas.jpg" media="(min-width: 769px)">
+                    <source srcset="images/small4.jpg" media="(min-width: 577px)">
+                    <source srcset="images/small4.jpg" media="(min-width: 277px)">
+                    <img srcset="{% url 'all_products' '10' %}" alt="responsive image"
+                        class="d-block img-fluid">
+                </picture>
+
+                <div class="carousel-caption justify-content-center align-items-center">
+                    <div class="carousel-caption">
+                        <div>
+                            <h3 class="hny-title mb-0 text-center "
+                                style="color: white; font-family: sans-serif; font-size: -webkit-xxx-large;">The Biggest
+                                <span style="color: teal; ">Sale</span></h3>
+                            <br>
+                            <p class="mb-4 text-center" style="color: orange; font-weight: bold; font-size: xx-large;">
+                                Special For Today</p>
+                            <br>
+                            <span class="btn btn-sm" style="background-color: teal; color: white;">Shop Now</span>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- /.carousel-item -->
+        <div class="carousel-item">
+            <a href="{% url 'all_products' '00' %}">
+                <picture>
+                    <source srcset="images/offer.jpg" media="(min-width: 1400px)">
+                    <source srcset="images/christmas2.jpg" media="(min-width: 769px)">
+                    <source srcset="images/small1.jpg" media="(min-width: 577px)">
+                        <source srcset="images/small1.jpg" media="(min-width: 277px)">
+                    <img srcset="{% url 'all_products' '10' %}" alt="responsive image"
+                        class="d-block img-fluid">
+                </picture>
+
+                <div class="carousel-caption justify-content-center align-items-center">
+                    <div class="carousel-caption">
+                        <div>
+                            <h3 class="hny-title mb-0 text-center "
+                                style="color:#b51e26; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: -webkit-xxx-large;">Best of Season 
+                                <span style="color: teal; ">OFFERS</span></h3>
+                            <br>
+                            <p class="mb-4 text-center" style="color: black; font-weight: bold; font-size: xx-large;">
+                                30 - 60% off</p>
+                            <br>
+                            <span class="btn btn-sm" style="background-color: teal; color: white;">Shop Now</span>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- /.carousel-item -->
+        <div class="carousel-item">
+            <a href="{% url 'all_products' '00' %}">
+                <picture>
+                    <source srcset="images/bg4.jpg" media="(min-width: 1400px)">
+                    <source srcset="images/christmas3.jpg" media="(min-width: 769px)">
+                    <source srcset="images/small3.jpg" media="(min-width: 577px)">
+                    <source srcset="images/small3.jpg" media="(min-width: 277px)">
+                    <img srcset="{% url 'all_products' '10' %}" alt="responsive image"
+                        class="d-block img-fluid">
+                </picture>
+
+                <div class="carousel-caption justify-content-center align-items-center">
+                    <div class="carousel-caption">
+                        <div>
+                            <h3 class="hny-title mb-0 text-center "
+                                style="color: white; font-family: sans-serif; font-size: -webkit-xxx-large;">Winter 
+                                <span style="color: teal; ">Collections</span></h3>
+                            <br>
+                            <p class="mb-4 text-center" style="color: #bd2130; font-weight: bold; font-size: xx-large;">
+                                New Arrivals on Sale</p>
+                            <br>
+                            <span class="btn btn-sm" style="background-color: teal; color: white;">Shop Now</span>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- /.carousel-item -->
+        <div class="carousel-item">
+            <a href="{% url 'all_products' '00' %}">
+                <picture>
+                    <source srcset="images/bg1.jpg" media="(min-width: 1400px)">
+                    <source srcset="images/christmas4.jpg" media="(min-width: 769px)">
+                    <source srcset="images/small2.jpg" media="(min-width: 577px)">
+                    <source srcset="images/small2.jpg" media="(min-width: 277px)">
+                        <!-- 577 -->
+                    <img srcset="{% url 'all_products' '10' %}" alt="responsive image"
+                        class="d-block img-fluid">
+                </picture>
+
+                <div class="carousel-caption justify-content-center align-items-center">
+                    <div class="carousel-caption">
+                        <div>
+                            <h3 class="hny-title mb-0 text-center "
+                                style="color: white; font-family: sans-serif; font-size: -webkit-xxx-large;">The Biggest
+                                <span style="color: teal; ">Sale</span></h3>
+                            <br>
+                            <p class="mb-4 text-center" style="color: orange; font-weight: bold; font-size: xx-large;">
+                                Special For Today</p>
+                            <br>
+                            <span class="btn btn-sm" style="background-color: teal; color: white;">Shop Now</span>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <!-- /.carousel-item -->
+    </div>
+    <!-- /.carousel-inner -->
+    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<!-- /.carousel -->
+
+
+<div class="container-fluid text-center">
+
+</div>
+<!-- /.container -->

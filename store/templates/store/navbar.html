@@ -1,0 +1,99 @@
+{% load static %}
+<style>
+  .bg-grey {
+    background-color: rgb(68, 67, 67)!important;
+}
+
+@media only screen and (max-width: 477px) {
+    #mydiv { display: none; }
+}
+  </style>
+
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0">
+        <ul class="navbar-nav ml-auto text-center">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+        </ul>
+    </div>
+    <div class="mx-auto my-2 order-0 order-md-1 position-relative">
+        <a class="mx-auto" href="#">
+            <img src="//placehold.it/120/ccff00" class="rounded-circle">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2">
+        <ul class="navbar-nav mr-auto text-center">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+        </ul>
+    </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-grey " style="height: 30px; " id="mydiv">
+
+    <div class="collapse navbar-collapse margin:0 auto;" id="navbarSupportedContent" >
+      <ul class="navbar-nav mr-auto container" >
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+          Electronics
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'all_products' '40' %}">Mobiles</a>
+          <a class="dropdown-item" href="{% url 'all_products' '41' %}">Laptops</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+          Men
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'all_products' '00' %}">Clothes</a>
+          <a class="dropdown-item" href="{% url 'all_products' '01' %}">Watches</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+          Women
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'all_products' '10' %}">Clothes</a>
+          <a class="dropdown-item" href="{% url 'all_products' '11' %}">Handbags</a>
+          <a class="dropdown-item" href="{% url 'all_products' '12' %}">Watches</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+          Kids
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'all_products' '20' %}">Boys</a>
+          <a class="dropdown-item" href="{% url 'all_products' '21' %}">Girls</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+          Home & Living
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'all_products' '30' %}">Bedsheets</a>
+          <a class="dropdown-item" href="{% url 'all_products' '31' %}">Home Decor</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color: white;" href="{% url 'all_products' 50 %}">iBooks</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color: white;" href="{% url 'offers' %}">Offer Zone</a>
+      </li>
+   <!--  <form class="form-inline mr-auto">
+      <input class="form-control mr-auto" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success mr-auto" type="submit">Search</button>
+    </form> -->
+      </ul>
+      
+     
+    </div>
+</nav>
+
+ 

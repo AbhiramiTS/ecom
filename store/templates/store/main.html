@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+	<title>Ecom</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<!-- //for bootstrap working -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+	<link
+		href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic'
+		rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+
+	<script type="text/javascript">
+		var user = '{{request.user}}'
+
+		function getToken(name) {
+			var cookieValue = null;
+			if (document.cookie && document.cookie !== '') {
+				var cookies = document.cookie.split(';');
+				for (var i = 0; i < cookies.length; i++) {
+					var cookie = cookies[i].trim();
+					// Does this cookie string begin with the name we want?
+					if (cookie.substring(0, name.length + 1) === (name + '=')) {
+						cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+						break;
+					}
+				}
+			}
+			return cookieValue;
+		}
+		var csrftoken = getToken('csrftoken')
+
+		function getCookie(name) {
+			// Split cookie string and get all individual name=value pairs in an array
+			var cookieArr = document.cookie.split(";");
+
+			// Loop through the array elements
+			for (var i = 0; i < cookieArr.length; i++) {
+				var cookiePair = cookieArr[i].split("=");
+
+				/* Removing whitespace at the beginning of the cookie name
+				and compare it with the given string */
+				if (name == cookiePair[0].trim()) {
+					// Decode the cookie value and return
+					return decodeURIComponent(cookiePair[1]);
+				}
+			}
+
+			// Return null if not found
+			return null;
+		}
+		var cart = JSON.parse(getCookie('cart'))
+
+		if (cart == undefined) {
+			cart = {}
+			console.log('Cart Created!', cart)
+			document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+		}
+		console.log('Cart:', cart)
+
+	</script>
+
+
+	<style>
+		.bg-dark {
+			background-color: rgb(255, 154, 60) !important;
+		}
+
+		/* Small devices (tablets, 768px and up) */
+		@media (min-width: 768px) {
+			.home-search {
+				width: 400px;
+			}
+		}
+
+		/* Medium devices (desktops, 992px and up) */
+		@media (min-width: 992px) {
+			.home-search {
+				width: 600px;
+			}
+		}
+
+		/* Large devices (large desktops, 1200px and up) */
+		@media (min-width: 1200px) {
+			.home-search {
+				width: 800px;
+			}
+		}
+
+		.row {
+			display: flex;
+		}
+
+		.column {
+			flex: 33.33%;
+			padding: 0px;
+		}
+
+		h3.hny-title,
+		h3.hny-title.two {
+			font-size: 40px;
+			line-height: 50px;
+			color: #232020;
+			margin-bottom: 24px;
+			text-transform: uppercase;
+			font-weight: 700;
+		}
+
+		.alpha-orange {
+			color: orangered;
+		}
+
+		.thin-font {
+			font-family: 'Open Sans', sans-serif;
+			font-size: 1.1em;
+			font-weight: 300;
+		}
+
+		.site-footer {
+			background-color: #26272b;
+			padding: 45px 0 20px;
+			font-size: 15px;
+			line-height: 24px;
+			color: #737373;
+		}
+
+		.site-footer hr {
+			border-top-color: #bbb;
+			opacity: 0.5
+		}
+
+		.site-footer hr.small {
+			margin: 20px 0
+		}
+
+		.site-footer h6 {
+			color: #fff;
+			font-size: 16px;
+			text-transform: uppercase;
+			margin-top: 5px;
+			letter-spacing: 2px
+		}
+
+		.site-footer a {
+			color: #737373;
+		}
+
+		.site-footer a:hover {
+			color: #3366cc;
+			text-decoration: none;
+		}
+
+		.footer-links {
+			padding-left: 0;
+			list-style: none
+		}
+
+		.footer-links li {
+			display: block
+		}
+
+		.footer-links a {
+			color: #737373
+		}
+
+		.footer-links a:active,
+		.footer-links a:focus,
+		.footer-links a:hover {
+			color: #3366cc;
+			text-decoration: none;
+		}
+
+		.footer-links.inline li {
+			display: inline-block
+		}
+
+		.site-footer .social-icons {
+			text-align: right
+		}
+
+		.site-footer .social-icons a {
+			width: 40px;
+			height: 40px;
+			line-height: 40px;
+			margin-left: 6px;
+			margin-right: 0;
+			border-radius: 100%;
+			background-color: #33353d
+		}
+
+		.copyright-text {
+			margin: 0
+		}
+
+		@media (max-width:991px) {
+			.site-footer [class^=col-] {
+				margin-bottom: 30px
+			}
+		}
+
+		@media (max-width:767px) {
+			.site-footer {
+				padding-bottom: 0
+			}
+
+			.site-footer .copyright-text,
+			.site-footer .social-icons {
+				text-align: center
+			}
+		}
+
+		.social-icons {
+			padding-left: 0;
+			margin-bottom: 0;
+			list-style: none
+		}
+
+		.social-icons li {
+			display: inline-block;
+			margin-bottom: 4px
+		}
+
+		.social-icons li.title {
+			margin-right: 15px;
+			text-transform: uppercase;
+			color: #96a2b2;
+			font-weight: 700;
+			font-size: 13px
+		}
+
+		.social-icons a {
+			background-color: #eceeef;
+			color: #818a91;
+			font-size: 16px;
+			display: inline-block;
+			line-height: 44px;
+			width: 44px;
+			height: 44px;
+			text-align: center;
+			margin-right: 8px;
+			border-radius: 100%;
+			-webkit-transition: all .2s linear;
+			-o-transition: all .2s linear;
+			transition: all .2s linear
+		}
+
+		.social-icons a:active,
+		.social-icons a:focus,
+		.social-icons a:hover {
+			color: #fff;
+			background-color: #29aafe
+		}
+
+		.social-icons.size-sm a {
+			line-height: 34px;
+			height: 34px;
+			width: 34px;
+			font-size: 14px
+		}
+
+		.social-icons a.facebook:hover {
+			background-color: #3b5998
+		}
+
+		.social-icons a.twitter:hover {
+			background-color: #00aced
+		}
+
+		.social-icons a.linkedin:hover {
+			background-color: #007bb6
+		}
+
+		.social-icons a.dribbble:hover {
+			background-color: #ea4c89
+		}
+
+		@media (max-width:767px) {
+			.social-icons li.title {
+				display: block;
+				margin-right: 0;
+				font-weight: 600
+			}
+		}
+
+		.logo_class {
+			margin-left: 90px;
+			padding-left: 2px;
+			width: 111px;
+			height: 25px;
+		}
+
+		#cart-icon {
+			width: 25px;
+			display: inline-block;
+			margin-left: 15px;
+		}
+
+		#cart-total {
+			display: block;
+			text-align: center;
+			color: #fff;
+			background-color: red;
+			width: 20px;
+			height: 25px;
+			border-radius: 50%;
+			font-size: 14px;
+		}
+	</style>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" style="color: black;" href="{% url 'store' %}">
+			<img class="logo_class" src="{% static 'images/ecom.png' %}" alt="Ecommerce">
+		</a>&nbsp;
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<!-- <li class="nav-item active">
+					<a class="nav-link" style="color: black; font-weight: bold;" href="{% url 'store' %}">Home <span
+							class="sr-only">(current)</span></a>
+				</li> &nbsp; -->
+
+				<form action="{% url 'products' %}" method="POST"
+					class="navbar-form navbar-left d-flex align-items-center flex-nowrap" role="search">
+					{% csrf_token %}
+					<input type="text" name="username" class="form-control home-search" placeholder="Search">
+					<button class="btn mr-auto"
+						style="background-color: rgb(36, 97, 230); color: white; border-top-right-radius: 2px; border-bottom-right-radius: 2px;"
+						type="submit"><i class="fa fa-search"></i></button>
+				</form>
+			</ul>
+
+			<div class="form-inline my-2 my-lg-0">
+				{% if user.is_authenticated %}
+				<a href="{% url 'logout' %}" class="btn btn-warning"
+					style="background-color:rgb(36, 97, 230); color: white;">Logout</a>
+				{% else %}
+				<a href="{% url 'login' %}" class="btn btn-warning"
+					style="background-color:rgb(36, 97, 230); color: white;">Login</a>
+				{% endif %}
+				<a href="{% url 'cart' %}">
+					<img id="cart-icon" style="width: 25px; display: inline-block; margin-left: 15px;" src="{% static 'images/cart.png' %}">
+				</a>
+				<p id="cart-total" style="">{{cartItems}}</p>
+
+			</div>
+		</div>
+	</nav>
+	<script>
+		console.log(current_user)
+	</script>
+	{% include 'store/navbar.html' %}
+
+
+	{% block content %}
+
+
+	{% endblock content %}
+
+
+	<hr>
+
+
+
+
+	<!-- Site footer -->
+	<footer class="site-footer">
+		<div style="margin-left: 50px; margin-right: 50px;">
+			<div class="row">
+				<!-- <div class="col-sm-12 col-md-6"> -->
+				<div class="col-xs-6 col-md-2">
+					<h6>ONLINE SHOPPING</h6>
+					<ul class="footer-links">
+						<li><a href="{% url 'all_products' '00' %}">Men</a></li>
+						<li><a href="{% url 'all_products' '10' %}">Women</a></li>
+						<li><a href="#">Kids</a></li>
+						<li><a href="{% url 'offers' %}">Offers</a></li>
+						<li><a href="#">Gift Cards</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-6 col-md-2">
+					<h6>Useful links</h6>
+					<ul class="footer-links">
+						<li><a href="#">Contact Us</a></li>
+						<li><a href="#">FAQ</a></li>
+						<li><a href="#">T&C</a></li>
+						<li><a href="#">Terms of Use</a></li>
+						<li><a href="#">Security</a></li>
+					</ul>
+				</div>
+
+				<div class="col-xs-6 col-md-2">
+					<h6>Help</h6>
+					<ul class="footer-links">
+						<li><a href="{% url 'checkout' %}">Payments</a></li>
+						<li><a href="{% url 'checkout' %}">Shipping</a></li>
+						<li><a href="{% url 'cart' %}">Cancellation and Returns</a></li>
+						<li><a href="#">Report Infringement</a></li>
+						<li><a href="#">Customer Care</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-6 col-md-4" style="border-left:1px solid grey;height:248px;">
+					<h6>Subscribe to Our Newsletter</h6>
+					<p>Get latest products & updates straight in your inbox</p>
+					<form class="navbar-form navbar-left d-flex align-items-center flex-nowrap" action="/newsletter/"
+						method="POST" role="search">
+						{% csrf_token %}
+						<input type="text" class="form-control home-search" placeholder="Enter your Email">
+						<button class="btn mr-auto" style="background-color: rgb(206, 157, 22); color: white;"
+							type="submit" href="{% url 'newsletter' %}">Submit</button>
+					</form>
+				</div>
+				<hr>
+			</div>
+			<hr>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-sm-6 col-xs-12">
+						<p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by
+							<a href="#">Ecommerce</a>.
+						</p>
+					</div>
+
+					<div class="col-md-4 col-sm-6 col-xs-12">
+						<ul class="social-icons">
+							<li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+							<li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+		crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed btn btn-success " style="color: white; text-decoration: none;"
+                    data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Filters
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col">
+                        <div class="card card-body">
+                            <form method="get">
+                                {% csrf_token %}
+                                {{ myFilter.form.management_form }}
+                                {% for field in myFilter.form %}
+                                Search for the Product :
+                                {{field}}
+                                {% endfor %}
+                                <!-- {{myFilter.form}} -->
+                                <button class="btn btn-primary" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <br>
+    <br>
+    <h3><strong>{{tag}}</span></h3>
+    <br>
+
+    <div class="row">
+        {% for product in products|slice:"16" %}
+        <div class="col-lg-3">
+            <!-- <img class="thumbnail" src="{{product.imageURL}}"> -->
+            <a href="{% url 'item_view' product.id %}"><img class="thumbnail" src="{{product.image_link}}"></a>
+            <div class="box-element product">
+                <h6><strong>{{product.name}}</strong> <strong style="color: #bf6f1de0;">&nbsp;₹{{product.price}}</strong></h6>
+                <hr>
+                <button data-product="{{product.id}}" data-action="add"
+                    class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                <a class="btn btn-outline-success" href="{% url 'item_view' product.id %}">View</a>
+            </div>
+        </div>
+        {% empty %}
+        <br><br>
+        <h3 class="hny-title mb-0 text-center"><span class="thin-font">Sorry! No Products Available</span></h3>
+        <br>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

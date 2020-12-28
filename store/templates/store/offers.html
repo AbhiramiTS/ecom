@@ -1,0 +1,68 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+{% load mathfilters %}
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <h3 class="hny-title mb-0 text-center "
+        style="color:#b51e26; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size: -webkit-xxx-large;">
+        Best of Season
+        <span style="color: teal; ">OFFERS</span>
+    </h3>
+    <br>
+    </h3>
+    <div class="row">
+        {% for product in men|slice:"4" %}
+        <div class="col-lg-3">
+            <!-- <img class="thumbnail" src="{{product.imageURL}}"> -->
+            <a href="{% url 'item_view' product.id %}"><img class="thumbnail" src="{{product.image_link}}"></a>
+            <div class="box-element product">
+                <h6><strong>{{product.name}}</strong>&nbsp;<strike>₹{{product.price}}</strike><strong
+                        style="color: #bf6f1de0;">&nbsp;₹{{product.price|sub:60}}</strong></h6>
+                <hr>
+                <button data-product="{{product.id}}" data-action="add"
+                    class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                <a class="btn btn-outline-success" href="{% url 'item_view' product.id %}"> View </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <br>
+    <div class="row">
+        {% for product in watches|slice:"4" %}
+        <div class="col-lg-3">
+            <!-- <img class="thumbnail" src="{{product.imageURL}}"> -->
+            <a href="{% url 'item_view' product.id %}"><img class="thumbnail" src="{{product.image_link}}"></a>
+            <div class="box-element product">
+                <h6><strong>{{product.name}}</strong>&nbsp;<strike>₹{{product.price}}</strike><strong
+                        style="color: #bf6f1de0;">&nbsp;₹{{product.price|sub:50}}</strong></h6>
+                <hr>
+                <button data-product="{{product.id}}" data-action="add"
+                    class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                <a class="btn btn-outline-success" href="{% url 'item_view' product.id %}">View</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <br>
+    <div class="row">
+        {% for product in mobiles|slice:"4" %}
+        <div class="col-lg-3">
+            <!-- <img class="thumbnail" src="{{product.imageURL}}"> -->
+            <a href="{% url 'item_view' product.id %}"><img class="thumbnail" src="{{product.image_link}}"></a>
+            <div class="box-element product">
+                <h6><strong>{{product.name}}</strong>&nbsp;<strike>₹{{product.price}}</strike><strong
+                        style="color: #bf6f1de0;">&nbsp;₹{{product.price|sub:170}}</strong></h6>
+                <hr>
+                <button data-product="{{product.id}}" data-action="add"
+                    class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+                <a class="btn btn-outline-success" href="{% url 'item_view' product.id %}">View</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

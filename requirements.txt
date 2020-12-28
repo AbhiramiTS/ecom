@@ -17,7 +17,6 @@ django-filter==2.4.0
 django-mathfilters==1.0.0
 django-storages==1.10.1
 filelock==3.0.12
-gunicorn==20.0.4
 idna==2.10
 ipykernel==5.3.4
 ipython==7.18.1
@@ -57,5 +56,4 @@ urllib3==1.25.10
 virtualenv==20.1.0
 virtualenv-clone==0.5.4
 wcwidth==0.2.5
-whitenoise==5.2.0
 wrapt==1.12.1

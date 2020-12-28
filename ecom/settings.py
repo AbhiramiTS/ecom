@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'store.apps.StoreConfig',
     'mathfilters',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

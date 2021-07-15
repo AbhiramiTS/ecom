@@ -94,20 +94,6 @@ DATABASES = {
     }
 }
 
-# 
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'ecom',
-#         'USER': 'postgres',
-#         'PASSWORD':'postgres',
-#         'HOST':'database-ecom.cd2eecpcgkye.us-east-2.rds.amazonaws.com',
-#         'PORT':'5432'
-#     }
-# }
-
-
 
 
 # Password validation
@@ -155,12 +141,3 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/images/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
-
-#SMTP Configuration
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'abhiramits004@gmail.com'
-EMAIL_HOST_PASSWORD = 'Abhishreya123*,.'
